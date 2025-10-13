@@ -1,0 +1,6 @@
+.stats {
+    border: solid 2px #76bf36;
+    border-radius: 0.4rem;
+    display: flex;
+    width: fit-content;
+}
