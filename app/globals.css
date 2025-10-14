@@ -1,8 +1,12 @@
+@font-face {
+    font-family: "work-sans";
+    src: url("/fonts/work-sans.ttf") format("truetype");
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "work-sans";
 }

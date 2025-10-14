@@ -1,8 +1,9 @@
 'use client'
 
 import './style.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { getTotalStatusPoints } from '../../scripts/stat-calc'
 
 const RankIcon = ({ statCount }: { statCount: number }) => {
     const rankTable = [
@@ -44,15 +45,23 @@ interface StatsItemProps {
     statCount: number;
     name: string;
     setStat: React.Dispatch<React.SetStateAction<number>>;
+    statPoint: number;
+    setStatPoint: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const StatsItem = ({ statCount, name, setStat }: StatsItemProps) => {
+const StatsItem = ({ statCount, name, setStat, statPoint, setStatPoint }: StatsItemProps) => {
+
+    useEffect(() => {
+        setStatPoint(getTotalStatusPoints(statCount))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [statCount])
+
     return (
         <div className="stat-item">
             <div className="stat-header">{name}</div>
             <div className="stat-content">
                 <RankIcon statCount={statCount} />
-                <div>
+                <div className='stat-text-content'>
                     <div className="stat-input">
                         <input
                             type="number"
@@ -69,6 +78,9 @@ const StatsItem = ({ statCount, name, setStat }: StatsItemProps) => {
                     <p className='maxstat'>/1200</p>
                 </div>
             </div>
+            <div className="stat-points">
+                {statPoint + ' Pts'}
+            </div>
         </div>
     );
 };
@@ -82,34 +94,55 @@ const RankCounter = () => {
     const [guts, setGuts] = useState<number>(120)
     const [wit, setWit] = useState<number>(120)
 
+    const [speedPoints, setSpeedPoints] = useState<number>(0)
+    const [staminaPoints, setStaminaPoints] = useState<number>(0)
+    const [powerPoints, setPowerPoints] = useState<number>(0)
+    const [gutsPoints, setGutsPoints] = useState<number>(0)
+    const [witPoints, setWitPoints] = useState<number>(0)
+
     return (
         <div className='stats-section'>
             <div className="stats">
-                <StatsItem
-                    setStat={setSpeed}
-                    statCount={speed}
-                    name='Speed'
-                />
-                <StatsItem
-                    setStat={setStamina}
-                    statCount={stamina}
-                    name='Stamina'
-                />
-                <StatsItem
-                    setStat={setPower}
-                    statCount={power}
-                    name='Power'
-                />
-                <StatsItem
-                    setStat={setGuts}
-                    statCount={guts}
-                    name='Guts'
-                />
-                <StatsItem
-                    setStat={setWit}
-                    statCount={wit}
-                    name='Wit'
-                />
+                <div className="sutats">
+                    <StatsItem
+                        setStat={setSpeed}
+                        statCount={speed}
+                        name='Speed'
+                        statPoint={speedPoints}
+                        setStatPoint={setSpeedPoints}
+                    />
+                    <StatsItem
+                        setStat={setStamina}
+                        statCount={stamina}
+                        name='Stamina'
+                        statPoint={staminaPoints}
+                        setStatPoint={setStaminaPoints}
+                    />
+                    <StatsItem
+                        setStat={setPower}
+                        statCount={power}
+                        name='Power'
+                        statPoint={powerPoints}
+                        setStatPoint={setPowerPoints}
+                    />
+                    <StatsItem
+                        setStat={setGuts}
+                        statCount={guts}
+                        name='Guts'
+                        statPoint={gutsPoints}
+                        setStatPoint={setGutsPoints}
+                    />
+                    <StatsItem
+                        setStat={setWit}
+                        statCount={wit}
+                        name='Wit'
+                        statPoint={witPoints}
+                        setStatPoint={setWitPoints}
+                    />
+                </div>
+                <h3 className="stats-total-points-panel">
+                    {speedPoints + staminaPoints + powerPoints + gutsPoints + witPoints + " Total Points"}
+                </h3>
             </div>
         </div>
     )
