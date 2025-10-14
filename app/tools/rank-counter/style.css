@@ -1,6 +1,70 @@
-.stats {
-    border: solid 2px #76bf36;
-    border-radius: 0.4rem;
+.stats-section {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats {
+    border: solid 2px #72bf2d;
     width: fit-content;
+    display: flex;
+    border-radius: 10px;
+}
+
+.stats .stat-item:first-child>.stat-header {
+    border-radius: 8px 0 0 0;
+}
+
+.stats .stat-item:last-child>.stat-header {
+    border-radius: 0 8px 0 0;
+}
+
+.stat-item {
+    width: fit-content;
+    border-right: dashed 2px #72bf2d;
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-header {
+    background-color: #77d823;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    padding: 2px 0;
+}
+
+.stat-content {
+    display: flex;
+    font-size: 15px;
+    text-align: right;
+    margin: 2px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.stat-input>[type=number]::-webkit-inner-spin-button,
+.stat-input>[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input>input[type=number] {
+    text-align: right;
+    appearance: textfield;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    font-size: 19px;
+    font-weight: bold;
+    border: none;
+    background: linear-gradient(0deg, #774522, #b3713f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.maxstat {
+    color: #ba7418;
 }
