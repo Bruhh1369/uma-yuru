@@ -1,0 +1,27 @@
+.aptitudes {
+    border: solid 2px #dfd4cc;
+    border-radius: 8px;
+    display: flex;
+    height: 6rem;
+    justify-content: center;
+    align-items: center;
+    color: #754018;
+    padding: 6px;
+}
+.apt-types{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0 6px;
+}
+.apt-types p:nth-child(2) {
+    margin: 8px 0;
+}
+.apts{
+    height: 100%;
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(4, 92px);
+}

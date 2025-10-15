@@ -1,0 +1,71 @@
+.stat-item {
+    width: fit-content;
+    border-right: dashed 2px #72bf2d;
+}
+
+.stat-item:last-child {
+    border-right: none;
+}
+
+.stat-header,
+.stat-points {
+    background-color: #77d823;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    padding: 2px 2px 4px 2px;
+    text-shadow: 0 1.4px 0.4px #508625;
+}
+
+.stat-content {
+    background-color: white;
+    display: flex;
+    font-size: 15px;
+    text-align: right;
+    padding: 2px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.stat-input>[type=number]::-webkit-inner-spin-button,
+.stat-input>[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.stat-input>input[type=number] {
+    text-align: right;
+    appearance: textfield;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    background: linear-gradient(0deg, #774522, #b3713f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "work-sans";
+}
+
+.maxstat {
+    color: #ba7418;
+    font-size: 17px;
+}
+
+@media (max-width: 540px) {
+    .stat-item {
+        border-right: none;
+        width: 100%;
+    }
+
+    .stat-header {
+        text-align: left;
+        padding-left: 0.4rem;
+    }
+
+    .stat-text-content {
+        margin-left: auto;
+    }
+}

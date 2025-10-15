@@ -1,0 +1,14 @@
+.aptitudes-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.aptitudes-item>p{
+    margin-left: 10px;
+}
+.apt-icon{
+    margin-left: auto;
+    margin-right: 6px;
+}

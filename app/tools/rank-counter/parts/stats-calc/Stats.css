@@ -1,0 +1,73 @@
+.stats {
+    width: fit-content;
+    background-color: #77d823;
+    border-radius: 10px;
+}
+.sutats {
+    display: flex;
+    border: solid 2px #72bf2d;
+    border-radius: 10px 10px 0 0;
+}
+.sutats .stat-item:first-child>.stat-header {
+    border-radius: 8px 0 0 0;
+}
+
+
+.sutats .stat-item:last-child>.stat-header {
+    border-radius: 0 8px 0 0;
+}
+
+.sutats .stat-item:first-child>.stat-points {
+    border-radius: 0 0 0 8px;
+}
+
+.sutats .stat-item:last-child>.stat-points {
+    border-radius: 0 0 8px 0;
+}
+.stats-total-points-panel {
+    background: linear-gradient(90deg, #fff5b0, #ffc027);
+    text-shadow:
+        -0.6px -0.6px 0.8px white,
+        0.6px -0.6px 0.8px white,
+        -0.6px 0.6px 0.8px white,
+        0.6px 0.6px 0.8px white;
+    width: 100%;
+    border-radius: 0 0 8px 8px;
+    text-align: center;
+    color: #794015;
+    border-width: 0 2px 2px 2px;
+    border-style: solid;
+    border-color: #f2a82d;
+}
+
+@media (max-width: 540px) {
+    .stats {
+        width: 90%;
+    }
+
+    .sutats {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .stats .stat-item:first-child>.stat-header {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .stats .stat-item:last-child>.stat-header {
+        border-radius: 0;
+    }
+
+    .stats .stat-item:first-child>.stat-points {
+        border-radius: 0;
+    }
+
+    .stat-points {
+        border-bottom: solid 2px #72bf2d;
+    }
+
+    .stats .stat-item:last-child>.stat-points {
+        border-radius: 0 0 8px 8px;
+        border-bottom: none;
+    }
+}
