@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
     font-size: 14px;
+    flex-direction: row;
     height: fit-content;
-    width: 7rem;
+    width: 6rem;
 }
 .aptitudes-item>p{
     width: 100%;
@@ -14,5 +14,11 @@
 .apt-icon{
     width: fit-content;
     height: 100%;
-    margin-right: 4px;
+}
+#apt-rank-select {
+    border: none;
+    width: 1rem;
+}
+.blank{
+    height: 21px;
 }

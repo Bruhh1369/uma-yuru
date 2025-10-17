@@ -33,7 +33,7 @@ const AptitudeIcon = ({ aptdDetails }: { aptdDetails: string }) => {
 
 const AptitudesItem = ({ type, setValue, aptdType, aptdDetails, aptdDetailsValue }: { type: string; setValue?: React.Dispatch<React.SetStateAction<string>>; aptdType?: string; aptdDetails?: string; aptdDetailsValue?: string; }) => {
 
-    if (type === 'blank') return <div className="aptitudes-item">
+    if (type === 'blank') return <div className="aptitudes-item blank">
         <p></p>
         <div className="apt-icon">
             <div style={{ width: '18px', height: '18px' }}></div>
@@ -41,7 +41,7 @@ const AptitudesItem = ({ type, setValue, aptdType, aptdDetails, aptdDetailsValue
     </div>
 
     return (
-        <div className="aptitudes-item" style={{ border: 'solid 2px #e2d4c9' }}>
+        <div className="aptitudes-item">
             <p>{type}</p>
             <div className="apt-icon">
                 <AptitudeIcon aptdDetails={aptdDetailsValue ?? ""} />

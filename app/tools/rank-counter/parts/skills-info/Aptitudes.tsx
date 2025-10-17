@@ -7,26 +7,31 @@ import AptitudesItem from './AptitudesItem'
 const Aptitudes = ({ setAptdVal, apdtTrack, aptdDistance, aptdStyle }: any) => {
     return (
         <div className="aptitudes">
-            <div className="apt-types">
+            <div className="apt-heading">
                 <p>Track</p>
                 <p>Distance</p>
                 <p>Style</p>
             </div>
-            <div className="apts">
+            <div className="apt-items">
                 <AptitudesItem type='Turf' setValue={setAptdVal} aptdType='track' aptdDetails='turf' aptdDetailsValue={apdtTrack.turf} />
-                <AptitudesItem type='Dirt' setValue={setAptdVal} aptdType='track' aptdDetails='dirt' aptdDetailsValue={apdtTrack.dirt} />
-                <AptitudesItem type='blank' />
-                <AptitudesItem type='blank' />
                 <AptitudesItem type='Sprint' setValue={setAptdVal} aptdType='distance' aptdDetails='short' aptdDetailsValue={aptdDistance.short} />
-                <AptitudesItem type='Mile' setValue={setAptdVal} aptdType='distance' aptdDetails='mile' aptdDetailsValue={aptdDistance.mile} />
-                <AptitudesItem type='Medium' setValue={setAptdVal} aptdType='distance' aptdDetails='medium' aptdDetailsValue={aptdDistance.medium} />
-                <AptitudesItem type='Long' setValue={setAptdVal} aptdType='distance' aptdDetails='long' aptdDetailsValue={aptdDistance.long} />
                 <AptitudesItem type='Front' setValue={setAptdVal} aptdType='style' aptdDetails='front' aptdDetailsValue={aptdStyle.front} />
-                <AptitudesItem type='Pace' setValue={setAptdVal} aptdType='style' aptdDetails='pace' aptdDetailsValue={aptdStyle.pace} />
-                <AptitudesItem type='Late' setValue={setAptdVal} aptdType='style' aptdDetails='late' aptdDetailsValue={aptdStyle.late} />
-                <AptitudesItem type='End' setValue={setAptdVal} aptdType='style' aptdDetails='end' aptdDetailsValue={aptdStyle.end} />
             </div>
-
+            <div className="apt-items">
+                <AptitudesItem type='Dirt' setValue={setAptdVal} aptdType='track' aptdDetails='dirt' aptdDetailsValue={apdtTrack.dirt} />
+                <AptitudesItem type='Mile' setValue={setAptdVal} aptdType='distance' aptdDetails='mile' aptdDetailsValue={aptdDistance.mile} />
+                <AptitudesItem type='Pace' setValue={setAptdVal} aptdType='style' aptdDetails='pace' aptdDetailsValue={aptdStyle.pace} />
+            </div>
+            <div className="apt-items">
+                <AptitudesItem type='blank' />
+                <AptitudesItem type='Medium' setValue={setAptdVal} aptdType='distance' aptdDetails='medium' aptdDetailsValue={aptdDistance.medium} />
+                <AptitudesItem type='Late' setValue={setAptdVal} aptdType='style' aptdDetails='late' aptdDetailsValue={aptdStyle.late} />
+            </div>
+                <div className="apt-items">
+                    <AptitudesItem type='blank' />
+                    <AptitudesItem type='Long' setValue={setAptdVal} aptdType='distance' aptdDetails='long' aptdDetailsValue={aptdDistance.long} />
+                    <AptitudesItem type='End' setValue={setAptdVal} aptdType='style' aptdDetails='end' aptdDetailsValue={aptdStyle.end} />
+                </div>
         </div>
     )
 }

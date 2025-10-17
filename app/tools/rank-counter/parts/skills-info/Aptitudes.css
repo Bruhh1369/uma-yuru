@@ -1,47 +1,92 @@
 .aptitudes {
-    border: solid 2px #dfd4cc;
+    border: solid 2px #72bf2b;
     border-radius: 8px;
     display: flex;
-    height: fit-content;
+    height: 5rem;
     justify-content: center;
     align-items: center;
     color: #754018;
-    padding: 6px;
     width: 100%;
 }
 
-.apt-types {
+.apt-heading {
+    height: 100%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-    margin: 0 6px;
 }
 
-.apt-types p:nth-child(2) {
-    margin: 8px 0;
+.apt-heading p {
+    background-color: #77d823;
+    text-align: center;
+    color: white;
+    height: 100%;
+    padding: 0 8px;
+    text-shadow: 0 1.4px 0.4px #508625;
 }
 
-.apts {
-    height: 100%;
-    display: grid;
-    gap: 4px 2rem;
-    width: 31rem;
-    grid-template-columns: repeat(4, 92px);
+.apt-heading p:first-child {
+    border-radius: 6px 0 0 0;
+}
+
+.apt-heading p:last-child {
+    border-radius: 0 0 0 6px;
+}
+
+.apt-items .aptitudes-item:nth-child(2) {
+    border-top: solid 2px #e5e5e5;
+    border-bottom: solid 2px #e5e5e5;
 }
 
 @media (max-width: 540px) {
     .aptitudes {
-        height: 14rem;
+        flex-direction: column;
+        height: fit-content;
     }
 
-    .apts {
-        grid-template-columns: repeat(2, 92px);
-        gap: 4px 2rem;
+    .apt-heading {
+        flex-direction: row;
+        width: 100%;
     }
 
-    .apt-types p:nth-child(2), .apt-types p:first-child {
-        margin: 0 0 3.1rem 0;
+    .apt-heading p {
+        width: 100%;
+    }
+
+    .apt-items {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .apt-heading p:first-child {
+        border-radius: 6px 0 0 0;
+    }
+
+    .apt-heading p:last-child {
+        border-radius: 0 6px 0 0;
+    }
+
+    .apt-items {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: solid 2px #e5e5e5;
+    }
+    .apt-items:last-child{
+        border-bottom: none;
+    }
+
+    .apt-items .aptitudes-item:nth-child(2) {
+        border-top: none;
+        border-bottom: none;
+        margin: 0 4rem;
+    }
+}
+@media (max-width: 480px) {
+    .apt-items .aptitudes-item:nth-child(2) {
+        border-top: none;
+        border-bottom: none;
+        margin: 0 2rem;
     }
 }
