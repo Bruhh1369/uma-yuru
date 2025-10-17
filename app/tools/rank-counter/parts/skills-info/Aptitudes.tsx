@@ -3,7 +3,8 @@
 import './Aptitudes.css'
 import AptitudesItem from './AptitudesItem'
 
-const Aptitudes = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Aptitudes = ({ setAptdVal, apdtTrack, aptdDistance, aptdStyle }: any) => {
     return (
         <div className="aptitudes">
             <div className="apt-types">
@@ -12,19 +13,20 @@ const Aptitudes = () => {
                 <p>Style</p>
             </div>
             <div className="apts">
-                <AptitudesItem type='Turf' />
-                <AptitudesItem type='Dirt' />
+                <AptitudesItem type='Turf' setValue={setAptdVal} aptdType='track' aptdDetails='turf' aptdDetailsValue={apdtTrack.turf} />
+                <AptitudesItem type='Dirt' setValue={setAptdVal} aptdType='track' aptdDetails='dirt' aptdDetailsValue={apdtTrack.dirt} />
                 <AptitudesItem type='blank' />
                 <AptitudesItem type='blank' />
-                <AptitudesItem type='Sprint' />
-                <AptitudesItem type='Mile' />
-                <AptitudesItem type='Medium' />
-                <AptitudesItem type='Long' />
-                <AptitudesItem type='Front' />
-                <AptitudesItem type='Pace' />
-                <AptitudesItem type='Late' />
-                <AptitudesItem type='End' />
+                <AptitudesItem type='Sprint' setValue={setAptdVal} aptdType='distance' aptdDetails='short' aptdDetailsValue={aptdDistance.short} />
+                <AptitudesItem type='Mile' setValue={setAptdVal} aptdType='distance' aptdDetails='mile' aptdDetailsValue={aptdDistance.mile} />
+                <AptitudesItem type='Medium' setValue={setAptdVal} aptdType='distance' aptdDetails='medium' aptdDetailsValue={aptdDistance.medium} />
+                <AptitudesItem type='Long' setValue={setAptdVal} aptdType='distance' aptdDetails='long' aptdDetailsValue={aptdDistance.long} />
+                <AptitudesItem type='Front' setValue={setAptdVal} aptdType='style' aptdDetails='front' aptdDetailsValue={aptdStyle.front} />
+                <AptitudesItem type='Pace' setValue={setAptdVal} aptdType='style' aptdDetails='pace' aptdDetailsValue={aptdStyle.pace} />
+                <AptitudesItem type='Late' setValue={setAptdVal} aptdType='style' aptdDetails='late' aptdDetailsValue={aptdStyle.late} />
+                <AptitudesItem type='End' setValue={setAptdVal} aptdType='style' aptdDetails='end' aptdDetailsValue={aptdStyle.end} />
             </div>
+
         </div>
     )
 }

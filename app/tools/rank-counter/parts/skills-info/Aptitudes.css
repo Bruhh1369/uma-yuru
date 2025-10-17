@@ -2,26 +2,46 @@
     border: solid 2px #dfd4cc;
     border-radius: 8px;
     display: flex;
-    height: 6rem;
+    height: fit-content;
     justify-content: center;
     align-items: center;
     color: #754018;
     padding: 6px;
+    width: 100%;
 }
-.apt-types{
+
+.apt-types {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100%;
     margin: 0 6px;
 }
+
 .apt-types p:nth-child(2) {
     margin: 8px 0;
 }
-.apts{
+
+.apts {
     height: 100%;
     display: grid;
-    gap: 4px;
+    gap: 4px 2rem;
+    width: 31rem;
     grid-template-columns: repeat(4, 92px);
+}
+
+@media (max-width: 540px) {
+    .aptitudes {
+        height: 14rem;
+    }
+
+    .apts {
+        grid-template-columns: repeat(2, 92px);
+        gap: 4px 2rem;
+    }
+
+    .apt-types p:nth-child(2), .apt-types p:first-child {
+        margin: 0 0 3.1rem 0;
+    }
 }

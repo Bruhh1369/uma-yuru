@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Aptitudes from "./Aptitudes";
+import './Skills.css'
 
 type Track = { turf: string; dirt: string };
 type Distance = { short: string; mile: string; medium: string; long: string };
@@ -19,20 +20,20 @@ const Skills = () => {
 
     const [aptitudes, setAptitudes] = useState<Aptitudes>({
         track: {
-            turf: "a",
-            dirt: "b"
+            turf: "s",
+            dirt: "s"
         },
         distance: {
-            short: "g",
-            mile: "a",
-            medium: "a",
-            long: "a"
+            short: "s",
+            mile: "s",
+            medium: "s",
+            long: "s"
         },
         style: {
-            front: "a",
-            pace: "a",
-            late: "a",
-            end: "e"
+            front: "s",
+            pace: "s",
+            late: "s",
+            end: "s"
         }
     })
 
@@ -76,7 +77,7 @@ const Skills = () => {
 
     return (
         <div className="apt-and-skill">
-            <Aptitudes />
+            <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
         </div>
     )
 }
