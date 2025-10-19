@@ -12,6 +12,7 @@ interface SkillData {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Skill = ({ skillsData }: { skillsData: any }) => {
     const [starLevel, setStarLevel] = useState(0);
+    const [uniqueSkillLevel, setUniqueSkillLevel] = useState(1)
 
     const handleStarClick = (level: number) => {
         setStarLevel(prev => (prev === level ? level - 1 : level));
@@ -25,7 +26,7 @@ const Skill = ({ skillsData }: { skillsData: any }) => {
                         <Image
                             src='https://images.start.gg/images/tournament/805954/image-5c808f7e6a9ea8b8bb540a60b0223e4d.png'
                             alt='uma-icon'
-                            style={{borderRadius: '3px'}}
+                            style={{ borderRadius: '3px' }}
                             fill
                         />
                     </div>
@@ -47,15 +48,17 @@ const Skill = ({ skillsData }: { skillsData: any }) => {
             <div className="skill-main">
                 <div className="skill-item unique-skill">
                     <div className="skill-name">
-                        <p>Unique Skill</p>
+                        <p>Unique Skill Lvl {uniqueSkillLevel}</p>
+                        <select id="unique-skill-level-select" onChange={(e) => setUniqueSkillLevel(e.target.value)}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </div>
-                    <div className="skill-text">
-                        <div className="skill-level">
-                            <p>lvl</p>
-                        </div>
-                        <div className="skill-pts">
-                            <p>pts</p>
-                        </div>
+                    <div className="skill-pts">
+                        <p>{starLevel <= 2 ? 120 * uniqueSkillLevel : 170 * uniqueSkillLevel} Pts</p>
                     </div>
                 </div>
                 {skillsData.map((d: SkillData, i: number) => {
@@ -64,10 +67,8 @@ const Skill = ({ skillsData }: { skillsData: any }) => {
                             <div className="skill-name">
                                 <p>{d.name}</p>
                             </div>
-                            <div className="skill-text">
-                                <div className="skill-pts">
-                                    <p>{d.cost} Pts</p>
-                                </div>
+                            <div className="skill-pts">
+                                <p>{d.cost} Pts</p>
                             </div>
                         </div>
                     )
