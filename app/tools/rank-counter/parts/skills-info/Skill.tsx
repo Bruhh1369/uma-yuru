@@ -49,7 +49,7 @@ const Skill = ({ skillsData }: { skillsData: any }) => {
                 <div className="skill-item unique-skill">
                     <div className="skill-name">
                         <p>Unique Skill Lvl {uniqueSkillLevel}</p>
-                        <select id="unique-skill-level-select" onChange={(e) => setUniqueSkillLevel(e.target.value)}>
+                        <select id="unique-skill-level-select" onChange={(e) => setUniqueSkillLevel(Number(e.target.value))}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

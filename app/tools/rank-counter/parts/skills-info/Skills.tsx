@@ -21,20 +21,20 @@ const Skills = () => {
 
     const [aptitudes, setAptitudes] = useState<Aptitudes>({
         track: {
-            turf: "s",
-            dirt: "s"
+            turf: "a",
+            dirt: "a"
         },
         distance: {
-            short: "s",
-            mile: "s",
-            medium: "s",
-            long: "s"
+            short: "a",
+            mile: "a",
+            medium: "a",
+            long: "a"
         },
         style: {
-            front: "s",
-            pace: "s",
-            late: "s",
-            end: "s"
+            front: "a",
+            pace: "a",
+            late: "a",
+            end: "a"
         }
     })
 
