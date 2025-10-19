@@ -8,13 +8,13 @@ type Distance = { short: string; mile: string; medium: string; long: string };
 type Style = { front: string; pace: string; late: string; end: string };
 type Aptitudes = { track: Track; distance: Distance; style: Style };
 type Condition = keyof Track | keyof Distance | keyof Style;
-type Skill = { name: string; condition: Condition | null; cost: number };
+type Skill = { name: string; condition: Condition | null; cost: number; gold?: boolean };
 
 const Skills = () => {
 
     const [skills, setSkills] = useState<Skill[]>([
-        { name: "Professor of curvature", condition: null, cost: 217 },
-        { name: "Swinging maestro", condition: "turf", cost: 217 },
+        { name: "Professor of curvature", condition: null, cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
         { name: "sss", condition: "pace", cost: 217 },
         { name: "end", condition: "end", cost: 217 }
     ])
@@ -79,7 +79,7 @@ const Skills = () => {
     return (
         <div className="apt-and-skill">
             <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
-            <Skill />
+            <Skill skillsData={skills} />
         </div>
     )
 }
