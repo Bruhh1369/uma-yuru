@@ -5,12 +5,19 @@ import Image from 'next/image';
 
 interface SkillData {
     name: string;
+    condition: string;
     cost: number;
     gold?: boolean;
 }
 
+type Track = { turf: string; dirt: string };
+type Distance = { short: string; mile: string; medium: string; long: string };
+type Style = { front: string; pace: string; late: string; end: string };
+type Aptitudes = { track: Track; distance: Distance; style: Style };
+type Condition = keyof Track | keyof Distance | keyof Style;
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints }: { skillsData: any; uniqueSkillPoints:number; setUniqueSkillPoints: React.Dispatch<React.SetStateAction<number>>; totalSkillPoints: number; }) => {
+const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap }: { skillsData: any; uniqueSkillPoints: number; setUniqueSkillPoints: React.Dispatch<React.SetStateAction<number>>; totalSkillPoints: number; aptitudes: Aptitudes; conditionToCategory: Record<Condition, keyof Aptitudes>; multiplierMap: Record<string, number>;}) => {
     const [starLevel, setStarLevel] = useState(0);
     const [uniqueSkillLevel, setUniqueSkillLevel] = useState(1)
 
@@ -20,7 +27,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
 
     useEffect(() => {
         setUniqueSkillPoints(starLevel <= 2 ? 120 * uniqueSkillLevel : 170 * uniqueSkillLevel)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [starLevel, uniqueSkillLevel])
 
     return (
@@ -67,13 +74,29 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     </div>
                 </div>
                 {skillsData.map((d: SkillData, i: number) => {
+
+                    function costCounter() { // condition list: turf, dirt, short, mile, medium, long, front, pace, late, end
+                        // aptituudes and multipier list: s&a=1.1, b&c=0.9, d&e&f=0.8 g=0.7
+                        if (!d.condition) return d.cost
+                        const category = conditionToCategory[d.condition as Condition];
+                        if (!category) return d.cost;
+                        const group = aptitudes[category] as Record<string, string>;
+                        const grade = group[d.condition];
+                        if (!grade) return d.cost;
+                        const multiplier = multiplierMap[grade] ?? 1;
+
+                        return Math.round(d.cost * multiplier);
+                    }
+
+                    const finalCost = costCounter()
+
                     return (
                         <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i}>
                             <div className="skill-name">
                                 <p>{d.name}</p>
                             </div>
                             <div className="skill-pts">
-                                <p>{d.cost} Pts</p>
+                                <p>{finalCost} Pts</p>
                             </div>
                         </div>
                     )
