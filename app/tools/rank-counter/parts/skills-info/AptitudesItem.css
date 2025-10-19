@@ -18,6 +18,7 @@
 #apt-rank-select {
     border: none;
     width: 1rem;
+    background: transparent;
 }
 .blank{
     height: 21px;

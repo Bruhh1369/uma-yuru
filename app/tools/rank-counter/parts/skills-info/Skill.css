@@ -1,0 +1,52 @@
+.skill {
+    width: 26rem;
+    background-color: #f1f1f1;
+    border: solid 2px #c2c2c2;
+    border-radius: 8px;
+}
+
+.skill-header {
+    padding: 0.8rem;
+    border-bottom: solid 2px #c2c2c2;
+}
+
+.skill-header-content {
+    display: flex;
+}
+
+.uma-icon {
+    width: 5rem;
+    height: 5rem;
+    background-color: aquamarine;
+    border: solid 4px #ffe68a;
+    box-shadow: 0 0 1px 1.5px #ebc050;
+    border-radius: 7px;
+    position: relative;
+}
+
+.star-panel {
+    display: flex;
+    height: 100%;
+}
+
+.uma-star {
+    margin: auto 0;
+    height: 2rem;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+.star {
+    font-size: 24px;
+    fill: #444;
+    user-select: none;
+}
+
+.star.active {
+    fill: gold;
+}
+
+.star:hover {
+    fill: #aaa
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Aptitudes from "./Aptitudes";
 import './Skills.css'
+import Skill from "./Skill";
 
 type Track = { turf: string; dirt: string };
 type Distance = { short: string; mile: string; medium: string; long: string };
@@ -78,6 +79,7 @@ const Skills = () => {
     return (
         <div className="apt-and-skill">
             <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
+            <Skill />
         </div>
     )
 }
