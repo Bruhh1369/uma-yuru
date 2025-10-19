@@ -10,14 +10,39 @@ type Aptitudes = { track: Track; distance: Distance; style: Style };
 type Condition = keyof Track | keyof Distance | keyof Style;
 type Skill = { name: string; condition: Condition | null; cost: number; gold?: boolean };
 
-const Skills = () => {
+const Skills = ({setResult}: {setResult: React.Dispatch<React.SetStateAction<number>>}) => {
 
     const [skills, setSkills] = useState<Skill[]>([
         { name: "Professor of curvature", condition: null, cost: 217, gold: true },
         { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
+        { name: "Swinging maestro", condition: "turf", cost: 217, gold: true },
         { name: "sss", condition: "pace", cost: 217 },
         { name: "end", condition: "end", cost: 217 }
     ])
+
+    const [uniqueSkillPoints, setUniqueSkillPoints] = useState<number>(0)
 
     const [aptitudes, setAptitudes] = useState<Aptitudes>({
         track: {
@@ -76,10 +101,15 @@ const Skills = () => {
 
     const total = mapped.reduce((t, c) => { return t + c }, 0)
 
+    useEffect(() => {
+        setResult(total+uniqueSkillPoints)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [total, uniqueSkillPoints])
+
     return (
         <div className="apt-and-skill">
             <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
-            <Skill skillsData={skills} />
+            <Skill skillsData={skills} uniqueSkillPoints={uniqueSkillPoints} setUniqueSkillPoints={setUniqueSkillPoints} totalSkillPoints={total+uniqueSkillPoints} />
         </div>
     )
 }

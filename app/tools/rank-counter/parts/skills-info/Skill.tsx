@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Skill.css';
 import Image from 'next/image';
 
@@ -10,13 +10,18 @@ interface SkillData {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Skill = ({ skillsData }: { skillsData: any }) => {
+const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints }: { skillsData: any; uniqueSkillPoints:number; setUniqueSkillPoints: React.Dispatch<React.SetStateAction<number>>; totalSkillPoints: number; }) => {
     const [starLevel, setStarLevel] = useState(0);
     const [uniqueSkillLevel, setUniqueSkillLevel] = useState(1)
 
     const handleStarClick = (level: number) => {
         setStarLevel(prev => (prev === level ? level - 1 : level));
     };
+
+    useEffect(() => {
+        setUniqueSkillPoints(starLevel <= 2 ? 120 * uniqueSkillLevel : 170 * uniqueSkillLevel)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [starLevel, uniqueSkillLevel])
 
     return (
         <div className="skill">
@@ -58,7 +63,7 @@ const Skill = ({ skillsData }: { skillsData: any }) => {
                         </select>
                     </div>
                     <div className="skill-pts">
-                        <p>{starLevel <= 2 ? 120 * uniqueSkillLevel : 170 * uniqueSkillLevel} Pts</p>
+                        <p>{uniqueSkillPoints} Pts</p>
                     </div>
                 </div>
                 {skillsData.map((d: SkillData, i: number) => {
@@ -73,6 +78,14 @@ const Skill = ({ skillsData }: { skillsData: any }) => {
                         </div>
                     )
                 })}
+            </div>
+            <div className="skill-footer">
+                <button className="add-skill">
+                    <p>Add Skill</p>
+                </button>
+                <h3 className="total-skill-pts">
+                    <p>{totalSkillPoints} Pts</p>
+                </h3>
             </div>
         </div>
     );

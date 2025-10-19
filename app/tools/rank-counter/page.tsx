@@ -8,12 +8,13 @@ import Skills from './parts/skills-info/Skills'
 const RankCounter = () => {
 
     const [statsEvaluationPoints, setStatsEvaluationPoints] = useState<number>(0)
+    const [skillsEvaluationPoints, setSkillsEvaluationPoints] = useState<number>(0)
 
     return (
         <div className='stats-section'>
             <Stats setResult={setStatsEvaluationPoints} />
-            <Skills />
-            {statsEvaluationPoints}
+            <Skills setResult={setSkillsEvaluationPoints}/>
+            {statsEvaluationPoints+skillsEvaluationPoints}
         </div>
     )
 }
