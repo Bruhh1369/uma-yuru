@@ -1,12 +1,21 @@
 @font-face {
-    font-family: "work-sans";
-    src: url("/fonts/work-sans.ttf") format("truetype");
+  font-family: "work-sans";
+  src: url("/fonts/work-sans.ttf") format("truetype");
 }
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-html {
+
+html, body {
   font-family: "work-sans";
+  scrollbar-width: 0;
+  scroll-padding: 0;
+  scroll-margin: 0;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar{
+  display: none;
 }

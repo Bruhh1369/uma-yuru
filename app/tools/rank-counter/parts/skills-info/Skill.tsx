@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 interface SkillData {
     name: string;
-    condition: string;
+    condition?: string | null;
     cost: number;
     gold?: boolean;
 }
@@ -16,10 +16,22 @@ type Style = { front: string; pace: string; late: string; end: string };
 type Aptitudes = { track: Track; distance: Distance; style: Style };
 type Condition = keyof Track | keyof Distance | keyof Style;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap }: { skillsData: any; uniqueSkillPoints: number; setUniqueSkillPoints: React.Dispatch<React.SetStateAction<number>>; totalSkillPoints: number; aptitudes: Aptitudes; conditionToCategory: Record<Condition, keyof Aptitudes>; multiplierMap: Record<string, number>;}) => {
+type SkillProps = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    skillsData: any,
+    uniqueSkillPoints: number,
+    setUniqueSkillPoints: React.Dispatch<React.SetStateAction<number>>,
+    totalSkillPoints: number,
+    aptitudes: Aptitudes,
+    conditionToCategory: Record<Condition, keyof Aptitudes>,
+    multiplierMap: Record<string, number>, onRemove: (index: number) => void;
+}
+
+const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove }: SkillProps) => {
     const [starLevel, setStarLevel] = useState(0);
     const [uniqueSkillLevel, setUniqueSkillLevel] = useState(1)
+
+    const [showAddSkillPanel, setShowAddSkillPanel] = useState<boolean>(false)
 
     const handleStarClick = (level: number) => {
         setStarLevel(prev => (prev === level ? level - 1 : level));
@@ -40,6 +52,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                             alt='uma-icon'
                             style={{ borderRadius: '3px' }}
                             fill
+                            sizes='100%'
                         />
                     </div>
                     <div className="uma-star">
@@ -75,8 +88,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                 </div>
                 {skillsData.map((d: SkillData, i: number) => {
 
-                    function costCounter() { // condition list: turf, dirt, short, mile, medium, long, front, pace, late, end
-                        // aptituudes and multipier list: s&a=1.1, b&c=0.9, d&e&f=0.8 g=0.7
+                    function costCounter() {
                         if (!d.condition) return d.cost
                         const category = conditionToCategory[d.condition as Condition];
                         if (!category) return d.cost;
@@ -91,7 +103,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     const finalCost = costCounter()
 
                     return (
-                        <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i}>
+                        <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i} onClick={() => onRemove && onRemove(i)}>
                             <div className="skill-name">
                                 <p>{d.name}</p>
                             </div>
@@ -103,13 +115,35 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                 })}
             </div>
             <div className="skill-footer">
-                <button className="add-skill">
+                <button className="add-skill" onClick={() => setShowAddSkillPanel(prev => !prev)}>
                     <p>Add Skill</p>
                 </button>
                 <h3 className="total-skill-pts">
                     <p>{totalSkillPoints} Pts</p>
                 </h3>
             </div>
+            {showAddSkillPanel && <div className="add-skill-wrapper">
+                <div className="add-skill-panel">
+                    <div className="search-skill-panel">
+                        <input type="search" id="search-skill" />
+                        <button id="close-add-skill" onClick={() => setShowAddSkillPanel(prev => !prev)}>X</button>
+                    </div>
+                    <div className="skill-lists">
+                        {skillsData.map((d: SkillData, i: number) => {
+                            return (
+                                <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i}>
+                                    <div className="skill-name">
+                                        <p>{d.name}</p>
+                                    </div>
+                                    <div className="skill-pts">
+                                        <p>{d.cost} Pts</p>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+            </div>}
         </div>
     );
 };
