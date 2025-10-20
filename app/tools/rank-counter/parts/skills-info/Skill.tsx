@@ -3,6 +3,13 @@ import { useEffect, useState } from 'react';
 import './Skill.css';
 import Image from 'next/image';
 
+type SkillsList = {
+    name: string,
+    cost: number,
+    gold: boolean,
+    condition: null | Condition
+}
+
 interface SkillData {
     name: string;
     condition?: string | null;
@@ -25,9 +32,74 @@ type SkillProps = {
     aptitudes: Aptitudes,
     conditionToCategory: Record<Condition, keyof Aptitudes>,
     multiplierMap: Record<string, number>, onRemove: (index: number) => void;
+    setSkills: React.Dispatch<React.SetStateAction<SkillData[]>>,
 }
 
-const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove }: SkillProps) => {
+const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove, setSkills }: SkillProps) => {
+
+    const [search, setSearch] = useState<string>("")
+
+    const [skillsList, setSkillList] = useState<SkillsList[]>([
+        {
+            name: "Professor of Curvature",
+            cost: 508,
+            gold: true,
+            condition: null
+        }, {
+            name: "Swinging Maestro",
+            cost: 508,
+            gold: true,
+            condition: null
+        }, {
+            name: "Concentration",
+            cost: 508,
+            gold: true,
+            condition: null
+        }, {
+            name: "Plan x",
+            cost: 508,
+            gold: true,
+            condition: "short"
+        }, {
+            name: "Turbo Sprint",
+            cost: 508,
+            gold: true,
+            condition: "short"
+        }, {
+            name: "Killer Tunes",
+            cost: 508,
+            gold: true,
+            condition: "medium"
+        },{
+            name: "Breath Of Fresh Air",
+            cost: 508,
+            gold: true,
+            condition: null
+        },{
+            name: "ShatterProof",
+            cost: 508,
+            gold: true,
+            condition: "pace"
+        },{
+            name: "Changing Gears",
+            cost: 508,
+            gold: true,
+            condition: "mile"
+        },{
+            name: "Focus",
+            cost: 129,
+            gold: false,
+            condition: null
+        },{
+            name: "CoolDown",
+            cost: 291,
+            gold: true,
+            condition: "long"
+        },
+    ])
+
+    const filteredSkillsList = skillsList.filter(i => i.name.toLowerCase().includes(search.toLowerCase()))
+
     const [starLevel, setStarLevel] = useState(0);
     const [uniqueSkillLevel, setUniqueSkillLevel] = useState(1)
 
@@ -125,13 +197,13 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
             {showAddSkillPanel && <div className="add-skill-wrapper">
                 <div className="add-skill-panel">
                     <div className="search-skill-panel">
-                        <input type="search" id="search-skill" />
+                        <input type="search" id="search-skill" onChange={(e) => setSearch(e.target.value)} value={search}/>
                         <button id="close-add-skill" onClick={() => setShowAddSkillPanel(prev => !prev)}>X</button>
                     </div>
                     <div className="skill-lists">
-                        {skillsData.map((d: SkillData, i: number) => {
+                        {filteredSkillsList.map((d: SkillData, i: number) => {
                             return (
-                                <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i}>
+                                <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i} onClick={() => setSkills(prev => [...prev, d])}>
                                     <div className="skill-name">
                                         <p>{d.name}</p>
                                     </div>

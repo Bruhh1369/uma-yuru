@@ -17,10 +17,10 @@ const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<
     }
 
     const [skills, setSkills] = useState<Skill[]>([
-        { name: "Professor of curvature", cost: 217, gold: true },
-        { name: "Swinging maestro", cost: 217, gold: true },
-        { name: "sss", condition: "pace", cost: 217 },
-        { name: "end", condition: "end", cost: 217 }
+        // { name: "Professor of curvature", cost: 217, gold: true },
+        // { name: "Swinging maestro", cost: 217, gold: true },
+        // { name: "sss", condition: "pace", cost: 217 },
+        // { name: "end", condition: "end", cost: 217 }
     ])
 
     const [uniqueSkillPoints, setUniqueSkillPoints] = useState<number>(0)
@@ -87,10 +87,15 @@ const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [total, uniqueSkillPoints])
 
+    useEffect(() => {
+        console.log(skills);
+        
+    }, [skills])
+
     return (
         <div className="apt-and-skill">
             <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
-            <Skill skillsData={skills} uniqueSkillPoints={uniqueSkillPoints} setUniqueSkillPoints={setUniqueSkillPoints} totalSkillPoints={total + uniqueSkillPoints} aptitudes={aptitudes} conditionToCategory={conditionToCategory} multiplierMap={multiplierMap} onRemove={handleRemoveSkill} />
+            <Skill skillsData={skills} uniqueSkillPoints={uniqueSkillPoints} setUniqueSkillPoints={setUniqueSkillPoints} totalSkillPoints={total + uniqueSkillPoints} aptitudes={aptitudes} conditionToCategory={conditionToCategory} multiplierMap={multiplierMap} onRemove={handleRemoveSkill} setSkills={setSkills} />
         </div>
     )
 }

@@ -1,7 +1,7 @@
 const rules = [
     {
         max: 49,
-        cond: (i, d) => (i % 2 ? 1: 0)
+        cond: (i) => (i % 2 ? 1: 0)
     },
     {
         max: 99,
@@ -61,7 +61,7 @@ const rules = [
     },
     {
         max: 799,
-        cond: (i, d) => (i % 2 ? 4: 3)
+        cond: (i) => (i % 2 ? 4: 3)
     },
     {
         max: 849,
@@ -85,7 +85,7 @@ const rules = [
     },
     {
         max: 1099,
-        cond: (i, d) => (i % 2 ? 6: 5)
+        cond: (i) => (i % 2 ? 6: 5)
     },
     {
         max: 1149,
