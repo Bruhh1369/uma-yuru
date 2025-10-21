@@ -48,6 +48,7 @@ const AptitudesItem = ({ type, setValue, aptdType, aptdDetails, aptdDetailsValue
             </div>
             <select
                 id="apt-rank-select"
+                defaultValue='a'
                 onChange={(e) => {
                     if (!aptdType || !aptdDetails) return;
                     setValue?.(

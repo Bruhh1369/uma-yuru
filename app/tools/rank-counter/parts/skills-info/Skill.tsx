@@ -39,64 +39,188 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
 
     const [search, setSearch] = useState<string>("")
 
-    const [skillsList, setSkillList] = useState<SkillsList[]>([
+    const skillsList = [
         {
             name: "Professor of Curvature",
             cost: 508,
             gold: true,
             condition: null
-        }, {
+        },
+        {
+            name: "Corner Adept",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Straightaway Adept",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Homestretch Haste",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Ramp Up",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Groundwork",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Uma Stan",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Prudent Positioning",
+            cost: 129,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Tail Held High",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Highlander",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Playtime's Over",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Slipstream",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Corner Acceleration",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Straightaway Acceleration",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Nimble Navigator",
+            cost: 129,
+            gold: false,
+            condition: null
+        },
+        {
             name: "Swinging Maestro",
             cost: 508,
             gold: true,
             condition: null
-        }, {
+        },
+        {
             name: "Concentration",
             cost: 508,
             gold: true,
             condition: null
-        }, {
-            name: "Plan x",
-            cost: 508,
-            gold: true,
-            condition: "short"
-        }, {
-            name: "Turbo Sprint",
-            cost: 508,
-            gold: true,
-            condition: "short"
-        }, {
-            name: "Killer Tunes",
-            cost: 508,
-            gold: true,
-            condition: "medium"
-        },{
-            name: "Breath Of Fresh Air",
-            cost: 508,
-            gold: true,
-            condition: null
-        },{
-            name: "ShatterProof",
-            cost: 508,
-            gold: true,
-            condition: "pace"
-        },{
-            name: "Changing Gears",
-            cost: 508,
-            gold: true,
-            condition: "mile"
-        },{
+        },
+        {
             name: "Focus",
             cost: 129,
             gold: false,
             condition: null
-        },{
+        },
+        {
+            name: "Go With The Flow",
+            cost: 217,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Plan x",
+            cost: 508,
+            gold: true,
+            condition: "short"
+        },
+        {
+            name: "Turbo Sprint",
+            cost: 508,
+            gold: true,
+            condition: "short"
+        },
+        {
+            name: "Killer Tunes",
+            cost: 508,
+            gold: true,
+            condition: "medium"
+        },
+        {
+            name: "Breath Of Fresh Air",
+            cost: 508,
+            gold: true,
+            condition: null
+        },
+        {
+            name: "ShatterProof",
+            cost: 508,
+            gold: true,
+            condition: "pace"
+        },
+        {
+            name: "Changing Gears",
+            cost: 508,
+            gold: true,
+            condition: "mile"
+        },
+        {
             name: "CoolDown",
             cost: 291,
             gold: true,
             condition: "long"
         },
-    ])
+        {
+            name: "Ignited Spirit SPD",
+            cost: 263,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Ignited Spirit PWR",
+            cost: 263,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Ignited Spirit GUTS",
+            cost: 263,
+            gold: false,
+            condition: null
+        },
+        {
+            name: "Ignited Spirit WIT",
+            cost: 263,
+            gold: false,
+            condition: null
+        },
+    ]
 
     const filteredSkillsList = skillsList.filter(i => i.name.toLowerCase().includes(search.toLowerCase()))
 
@@ -197,7 +321,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
             {showAddSkillPanel && <div className="add-skill-wrapper">
                 <div className="add-skill-panel">
                     <div className="search-skill-panel">
-                        <input type="search" id="search-skill" onChange={(e) => setSearch(e.target.value)} value={search}/>
+                        <input type="search" id="search-skill" onChange={(e) => setSearch(e.target.value)} value={search} />
                         <button id="close-add-skill" onClick={() => setShowAddSkillPanel(prev => !prev)}>X</button>
                     </div>
                     <div className="skill-lists">

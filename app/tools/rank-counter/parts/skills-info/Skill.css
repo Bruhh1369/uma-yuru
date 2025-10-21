@@ -61,11 +61,11 @@
     grid-auto-rows: 2rem;
     column-gap: 0.2rem;
     row-gap: 0.5rem;
-    max-height: 20rem;
     overflow-y: scroll;
     scrollbar-width: 0;
     scroll-padding: 0;
     scroll-margin: 0;
+    height: 20rem;
 }
 
 .skill-main::-webkit-scrollbar{
