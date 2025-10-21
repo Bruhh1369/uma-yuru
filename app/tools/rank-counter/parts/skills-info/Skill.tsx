@@ -12,7 +12,7 @@ type SkillsList = {
 
 interface SkillData {
     name: string;
-    condition?: string | null;
+    condition?: Condition | null;
     cost: number;
     gold?: boolean;
 }
