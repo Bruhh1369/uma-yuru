@@ -39,7 +39,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
 
     const [search, setSearch] = useState<string>("")
 
-    const skillsList = [
+    const skillsList: SkillsList[] = [
         {
             name: "Professor of Curvature",
             cost: 508,
