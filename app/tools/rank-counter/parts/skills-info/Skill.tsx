@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import './Skill.css';
 import Image from 'next/image';
+import { GreenButton } from '@/app/assets/button/buttons';
 
 interface SkillData {
     name: string;
@@ -54,11 +55,15 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         { name: "Focus", cost: 129, gold: false, condition: null, type: "gate" },
         { name: "Go With The Flow", cost: 217, gold: false, condition: null, type: "navigation" },
         { name: "Plan x", cost: 508, gold: true, condition: "short", type: "acceleration" },
+        { name: "Countermeasure", cost: 217, gold: false, condition: "short", type: "acceleration" },
         { name: "Turbo Sprint", cost: 508, gold: true, condition: "short", type: "acceleration" },
+        { name: "Sprinting Gear", cost: 217, gold: false, condition: "short", type: "acceleration" },
         { name: "Killer Tunes", cost: 508, gold: true, condition: "medium", type: "velocity" },
+        { name: "Up-Tempo", cost: 217, gold: false, condition: "medium", type: "velocity" },
         { name: "Breath Of Fresh Air", cost: 508, gold: true, condition: null, type: "recovery" },
         { name: "ShatterProof", cost: 508, gold: true, condition: "pace", type: "acceleration" },
         { name: "Changing Gears", cost: 508, gold: true, condition: "mile", type: "velocity" },
+        { name: "Shifting Gears", cost: 217, gold: false, condition: "mile", type: "velocity" },
         { name: "CoolDown", cost: 508, gold: true, condition: "long", type: "recovery" },
         { name: "Ignited Spirit SPD", cost: 263, gold: false, condition: null, type: "velocity" },
         { name: "Ignited Spirit PWR", cost: 263, gold: false, condition: null, type: "acceleration" },
@@ -72,7 +77,6 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         { name: "Productive Plan", cost: 217, gold: false, condition: "mile", type: "velocity" },
         { name: "Updrafters", cost: 217, gold: false, condition: "mile", type: "acceleration" },
         { name: "Acceleration", cost: 217, gold: false, condition: "mile", type: "acceleration" },
-        { name: "Sprinting Gear", cost: 217, gold: false, condition: "short", type: "acceleration" },
         { name: "Huge Lead", cost: 262, gold: false, condition: "short", type: "velocity" },
         { name: "Sprint Corners ○", cost: 217, gold: false, condition: "short", type: "velocity" },
         { name: "Sprint Corners ◎", cost: 217, gold: false, condition: "short", type: "velocity" },
@@ -80,8 +84,6 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         { name: "Sprint Straightaways ◎", cost: 217, gold: false, condition: "short", type: "velocity" },
         { name: "Gap Closer", cost: 217, gold: false, condition: "short", type: "velocity" },
         { name: "Meticulous Measure", cost: 217, gold: false, condition: "short", type: "navigation" },
-        { name: "Countermeasure", cost: 217, gold: false, condition: "short", type: "acceleration" },
-        { name: "Up-Tempo", cost: 217, gold: false, condition: "medium", type: "velocity" },
         { name: "Hawkeye", cost: 129, gold: false, condition: "medium", type: "viewfield" },
         { name: "Thunderbolt Step", cost: 174, gold: false, condition: "medium", type: "navigation" },
         { name: "Steadfast", cost: 239, gold: false, condition: "medium", type: "velocity" },
@@ -113,7 +115,18 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         navigation: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20051.png',
         gate: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20061.png',
         viewfield: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20091.png',
-        recovery: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20021.png'
+        recovery: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20021.png',
+        hesitation: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30011.png',
+        panicking: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30021.png',
+        ragebaiting: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30041.png',
+        disturb: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30051.png',
+        narrowfiled: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30071.png',
+        greenspeed: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10011.png',
+        greenstamina: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10021.png',
+        greenpower: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10031.png',
+        greenguts: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10041.png',
+        greenwit: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10051.png',
+        greenrandom: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10061.png',
     };
 
     return (
@@ -198,9 +211,9 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                 })}
             </div>
             <div className="skill-footer">
-                <button className="add-skill" onClick={() => setShowAddSkillPanel(prev => !prev)}>
-                    <p>Add Skill</p>
-                </button>
+                <GreenButton onClick={() => setShowAddSkillPanel(prev => !prev)}>
+                    Add Skill
+                </GreenButton>
                 <h3 className="total-skill-pts">
                     <p>{totalSkillPoints} Pts</p>
                 </h3>
