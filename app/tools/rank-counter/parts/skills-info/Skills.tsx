@@ -8,7 +8,7 @@ type Distance = { short: string; mile: string; medium: string; long: string };
 type Style = { front: string; pace: string; late: string; end: string };
 type Aptitudes = { track: Track; distance: Distance; style: Style };
 type Condition = keyof Track | keyof Distance | keyof Style;
-type Skill = { name: string; condition?: Condition | null; cost: number; gold?: boolean };
+type Skill = { name: string; condition?: Condition | null; cost: number; gold?: boolean; type?: "velocity" | "acceleration" | "navigation" | "gate" | "viewfield" | "recovery" | "greenspeed" | "greenstamina" | "greenpower" | "greenguts" | "greenwit" | "greenrandom" | "hesitation" | "panicking" | "frenzier" | "disturb" | "narrowfiled"; };
 
 const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<number>> }) => {
 
@@ -16,12 +16,7 @@ const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<
         setSkills(prev => prev.filter((_, i) => i !== index));
     }
 
-    const [skills, setSkills] = useState<Skill[]>([
-        // { name: "Professor of curvature", cost: 217, gold: true },
-        // { name: "Swinging maestro", cost: 217, gold: true },
-        // { name: "sss", condition: "pace", cost: 217 },
-        // { name: "end", condition: "end", cost: 217 }
-    ])
+    const [skills, setSkills] = useState<Skill[]>([])
 
     const [uniqueSkillPoints, setUniqueSkillPoints] = useState<number>(0)
 
@@ -86,11 +81,6 @@ const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<
         setResult(total + uniqueSkillPoints)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [total, uniqueSkillPoints])
-
-    useEffect(() => {
-        console.log(skills);
-        
-    }, [skills])
 
     return (
         <div className="apt-and-skill">

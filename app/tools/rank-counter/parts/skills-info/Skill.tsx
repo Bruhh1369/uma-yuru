@@ -3,18 +3,12 @@ import { useEffect, useState } from 'react';
 import './Skill.css';
 import Image from 'next/image';
 
-type SkillsList = {
-    name: string,
-    cost: number,
-    gold: boolean,
-    condition: null | Condition
-}
-
 interface SkillData {
     name: string;
     condition?: Condition | null;
     cost: number;
     gold?: boolean;
+    type?: "velocity" | "acceleration" | "navigation" | "gate" | "viewfield" | "recovery" | "greenspeed" | "greenstamina" | "greenpower" | "greenguts" | "greenwit" | "greenrandom" | "hesitation" | "panicking" | "ragebaiting" | "disturb" | "narrowfiled";
 }
 
 type Track = { turf: string; dirt: string };
@@ -39,187 +33,62 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
 
     const [search, setSearch] = useState<string>("")
 
-    const skillsList: SkillsList[] = [
-        {
-            name: "Professor of Curvature",
-            cost: 508,
-            gold: true,
-            condition: null
-        },
-        {
-            name: "Corner Adept",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Straightaway Adept",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Homestretch Haste",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Ramp Up",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Groundwork",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Uma Stan",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Prudent Positioning",
-            cost: 129,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Tail Held High",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Highlander",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Playtime's Over",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Slipstream",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Corner Acceleration",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Straightaway Acceleration",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Nimble Navigator",
-            cost: 129,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Swinging Maestro",
-            cost: 508,
-            gold: true,
-            condition: null
-        },
-        {
-            name: "Concentration",
-            cost: 508,
-            gold: true,
-            condition: null
-        },
-        {
-            name: "Focus",
-            cost: 129,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Go With The Flow",
-            cost: 217,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Plan x",
-            cost: 508,
-            gold: true,
-            condition: "short"
-        },
-        {
-            name: "Turbo Sprint",
-            cost: 508,
-            gold: true,
-            condition: "short"
-        },
-        {
-            name: "Killer Tunes",
-            cost: 508,
-            gold: true,
-            condition: "medium"
-        },
-        {
-            name: "Breath Of Fresh Air",
-            cost: 508,
-            gold: true,
-            condition: null
-        },
-        {
-            name: "ShatterProof",
-            cost: 508,
-            gold: true,
-            condition: "pace"
-        },
-        {
-            name: "Changing Gears",
-            cost: 508,
-            gold: true,
-            condition: "mile"
-        },
-        {
-            name: "CoolDown",
-            cost: 291,
-            gold: true,
-            condition: "long"
-        },
-        {
-            name: "Ignited Spirit SPD",
-            cost: 263,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Ignited Spirit PWR",
-            cost: 263,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Ignited Spirit GUTS",
-            cost: 263,
-            gold: false,
-            condition: null
-        },
-        {
-            name: "Ignited Spirit WIT",
-            cost: 263,
-            gold: false,
-            condition: null
-        },
+    const skillsList: SkillData[] = [
+        { name: "Professor of Curvature", cost: 508, gold: true, condition: null, type: "velocity" },
+        { name: "Corner Adept ○", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Straightaway Adept", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Homestretch Haste", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Ramp Up", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Groundwork", cost: 217, gold: false, condition: null, type: "acceleration" },
+        { name: "Uma Stan", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Prudent Positioning", cost: 129, gold: false, condition: null, type: "navigation" },
+        { name: "Tail Held High", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Highlander", cost: 217, gold: false, condition: null, type: "acceleration" },
+        { name: "Playtime's Over", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Slipstream", cost: 217, gold: false, condition: null, type: "velocity" },
+        { name: "Corner Acceleration ○", cost: 217, gold: false, condition: null, type: "acceleration" },
+        { name: "Straightaway Acceleration", cost: 217, gold: false, condition: null, type: "acceleration" },
+        { name: "Nimble Navigator", cost: 129, gold: false, condition: null, type: "acceleration" },
+        { name: "Swinging Maestro", cost: 508, gold: true, condition: null, type: "recovery" },
+        { name: "Concentration", cost: 508, gold: true, condition: null, type: "gate" },
+        { name: "Focus", cost: 129, gold: false, condition: null, type: "gate" },
+        { name: "Go With The Flow", cost: 217, gold: false, condition: null, type: "navigation" },
+        { name: "Plan x", cost: 508, gold: true, condition: "short", type: "acceleration" },
+        { name: "Turbo Sprint", cost: 508, gold: true, condition: "short", type: "acceleration" },
+        { name: "Killer Tunes", cost: 508, gold: true, condition: "medium", type: "velocity" },
+        { name: "Breath Of Fresh Air", cost: 508, gold: true, condition: null, type: "recovery" },
+        { name: "ShatterProof", cost: 508, gold: true, condition: "pace", type: "acceleration" },
+        { name: "Changing Gears", cost: 508, gold: true, condition: "mile", type: "velocity" },
+        { name: "CoolDown", cost: 508, gold: true, condition: "long", type: "recovery" },
+        { name: "Ignited Spirit SPD", cost: 263, gold: false, condition: null, type: "velocity" },
+        { name: "Ignited Spirit PWR", cost: 263, gold: false, condition: null, type: "acceleration" },
+        { name: "Ignited Spirit GUTS", cost: 263, gold: false, condition: null, type: "velocity" },
+        { name: "Ignited Spirit WIT", cost: 263, gold: false, condition: null, type: "navigation" },
+        { name: "Unyielding Spirit", cost: 217, gold: false, condition: "mile", type: "velocity" },
+        { name: "Mile Corners ○", cost: 217, gold: false, condition: "mile", type: "velocity" },
+        { name: "Mile Corners ◎", cost: 262, gold: false, condition: "mile", type: "velocity" },
+        { name: "Mile Straightaways ○", cost: 217, gold: false, condition: "mile", type: "velocity" },
+        { name: "Mile Straightaways ◎", cost: 262, gold: false, condition: "mile", type: "velocity" },
+        { name: "Productive Plan", cost: 217, gold: false, condition: "mile", type: "velocity" },
+        { name: "Updrafters", cost: 217, gold: false, condition: "mile", type: "acceleration" },
+        { name: "Acceleration", cost: 217, gold: false, condition: "mile", type: "acceleration" },
+        { name: "Sprinting Gear", cost: 217, gold: false, condition: "short", type: "acceleration" },
+        { name: "Huge Lead", cost: 262, gold: false, condition: "short", type: "velocity" },
+        { name: "Sprint Corners ○", cost: 217, gold: false, condition: "short", type: "velocity" },
+        { name: "Sprint Corners ◎", cost: 217, gold: false, condition: "short", type: "velocity" },
+        { name: "Sprint Straightaways ○", cost: 217, gold: false, condition: "short", type: "velocity" },
+        { name: "Sprint Straightaways ◎", cost: 217, gold: false, condition: "short", type: "velocity" },
+        { name: "Gap Closer", cost: 217, gold: false, condition: "short", type: "velocity" },
+        { name: "Meticulous Measure", cost: 217, gold: false, condition: "short", type: "navigation" },
+        { name: "Countermeasure", cost: 217, gold: false, condition: "short", type: "acceleration" },
+        { name: "Up-Tempo", cost: 217, gold: false, condition: "medium", type: "velocity" },
+        { name: "Hawkeye", cost: 129, gold: false, condition: "medium", type: "viewfield" },
+        { name: "Thunderbolt Step", cost: 174, gold: false, condition: "medium", type: "navigation" },
+        { name: "Steadfast", cost: 239, gold: false, condition: "medium", type: "velocity" },
+        { name: "Medium Corners ○", cost: 217, gold: false, condition: "medium", type: "velocity" },
+        { name: "Medium Corners ◎", cost: 262, gold: false, condition: "medium", type: "velocity" },
+        { name: "Medium Straightaways ○", cost: 217, gold: false, condition: "medium", type: "velocity" },
+        { name: "Medium Straightaways ◎", cost: 262, gold: false, condition: "medium", type: "velocity" },
     ]
 
     const filteredSkillsList = skillsList.filter(i => i.name.toLowerCase().includes(search.toLowerCase()))
@@ -237,6 +106,15 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         setUniqueSkillPoints(starLevel <= 2 ? 120 * uniqueSkillLevel : 170 * uniqueSkillLevel)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [starLevel, uniqueSkillLevel])
+
+    const skillTypeIconMap: Record<string, string> = {
+        velocity: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20011.png',
+        acceleration: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20041.png',
+        navigation: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20051.png',
+        gate: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20061.png',
+        viewfield: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20091.png',
+        recovery: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20021.png'
+    };
 
     return (
         <div className="skill">
@@ -276,6 +154,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
                     </div>
                     <div className="skill-pts">
@@ -297,9 +176,17 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     }
 
                     const finalCost = costCounter()
+                    const iconUrl = skillTypeIconMap[d.type ?? ""] || "";
 
                     return (
                         <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i} onClick={() => onRemove && onRemove(i)}>
+                            <div className="skill-icon">
+                                <Image
+                                    src={iconUrl}
+                                    alt='skill-icon'
+                                    fill
+                                />
+                            </div>
                             <div className="skill-name">
                                 <p>{d.name}</p>
                             </div>
@@ -326,8 +213,16 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     </div>
                     <div className="skill-lists">
                         {filteredSkillsList.map((d: SkillData, i: number) => {
+                            const iconUrl = skillTypeIconMap[d.type ?? ""] || "";
                             return (
                                 <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i} onClick={() => setSkills(prev => [...prev, d])}>
+                                    <div className="skill-icon">
+                                        <Image
+                                            src={iconUrl}
+                                            alt='skill-icon'
+                                            fill
+                                        />
+                                    </div>
                                     <div className="skill-name">
                                         <p>{d.name}</p>
                                     </div>

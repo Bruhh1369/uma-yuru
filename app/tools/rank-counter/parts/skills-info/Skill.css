@@ -90,6 +90,12 @@
     background: linear-gradient(90deg, #fef4f3, #b4b2c8);
 }
 
+.skill-icon{
+    position: relative;
+    width: 26px;
+    aspect-ratio: 1/1;
+}
+
 .skill-name {
     width: 100%;
     align-items: center;
@@ -221,8 +227,7 @@
 
 .skill-lists{
     display: grid;
-    background-color: #f1f1f1;
-    border: solid 2px #c2c2c2;
+    background-color: #dedede;
     border-radius: 8px;
     height: 100%;
     gap: 6px;
