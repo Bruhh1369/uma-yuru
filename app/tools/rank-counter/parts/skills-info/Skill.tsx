@@ -91,6 +91,23 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         { name: "Medium Corners ◎", cost: 262, gold: false, condition: "medium", type: "velocity" },
         { name: "Medium Straightaways ○", cost: 217, gold: false, condition: "medium", type: "velocity" },
         { name: "Medium Straightaways ◎", cost: 262, gold: false, condition: "medium", type: "velocity" },
+        { name: "Long Straightaways ○", cost: 217, gold: false, condition: "long", type: "velocity" },
+        { name: "Long Straightaways ◎", cost: 262, gold: false, condition: "long", type: "velocity" },
+        { name: "Long Corners ○", cost: 217, gold: false, condition: "long", type: "velocity" },
+        { name: "Long Corners ◎", cost: 262, gold: false, condition: "long", type: "velocity" },
+        { name: "Keeping The Lead", cost: 217, gold: false, condition: "long", type: "velocity" },
+        { name: "Pressure", cost: 239, gold: false, condition: "long", type: "velocity" },
+        { name: "Inside Scoop", cost: 217, gold: false, condition: "long", type: "velocity" },
+        { name: "Early Lead", cost: 217, gold: false, condition: "front", type: "acceleration" },
+        { name: "Second Wind", cost: 217, gold: false, condition: "front", type: "acceleration" },
+        { name: "Final Push", cost: 217, gold: false, condition: "front", type: "acceleration" },
+        { name: "Fast-Paced", cost: 217, gold: false, condition: "front", type: "velocity" },
+        { name: "Leader's Pride", cost: 217, gold: false, condition: "front", type: "velocity" },
+        { name: "Front Runner Straightaways ○", cost: 217, gold: false, condition: "front", type: "velocity" },
+        { name: "Front Runner Straightaways ◎", cost: 262, gold: false, condition: "front", type: "velocity" },
+        { name: "Front Runner Corners ○", cost: 217, gold: false, condition: "front", type: "velocity" },
+        { name: "Front Runner Corners ◎", cost: 262, gold: false, condition: "front", type: "velocity" },
+        { name: "Dodging Danger", cost: 129, gold: false, condition: "front", type: "navigation" },
     ]
 
     const filteredSkillsList = skillsList.filter(i => i.name.toLowerCase().includes(search.toLowerCase()))
