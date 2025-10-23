@@ -34,7 +34,6 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
 
     const [search, setSearch] = useState<string>("")
     const skillsList: SkillData[] = [
-
         { name: "Professor of Curvature", cost: 508, gold: true, condition: null, type: "velocity" },
         { name: "Corner Adept ○", cost: 217, gold: false, condition: null, type: "velocity" },
         { name: "Straightaway Adept", cost: 217, gold: false, condition: null, type: "velocity" },
@@ -106,8 +105,31 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         { name: "Front Runner Corners ◎", cost: 262, gold: false, condition: "front", type: "velocity" },
         { name: "Dodging Danger", cost: 129, gold: false, condition: "front", type: "navigation" },
         { name: "Swinging Maestro", cost: 508, gold: true, condition: null, type: "recovery" },
+        { name: "Corner Recovery ○", cost: 217, gold: false, condition: null, type: "recovery" },
         { name: "Breath Of Fresh Air", cost: 508, gold: true, condition: null, type: "recovery" },
         { name: "CoolDown", cost: 508, gold: true, condition: "long", type: "recovery" },
+        { name: "Calm In A Crowd", cost: 217, gold: false, condition: null, type: "recovery" },
+        { name: "Pace Strategy", cost: 217, gold: false, condition: null, type: "recovery" },
+        { name: "Lay Low", cost: 217, gold: false, condition: null, type: "recovery" },
+        { name: "Straightaway Recovery", cost: 217, gold: false, condition: null, type: "recovery" },
+        { name: "Shake It Out", cost: 217, gold: false, condition: null, type: "recovery" },
+        { name: "Triple 7s", cost: 217, gold: false, condition: null, type: "recovery" },
+        { name: "Ignited Spirit STA", cost: 263, gold: false, condition: null, type: "recovery" },
+        { name: "Moxie", cost: 217, gold: false, condition: "front", type: "recovery" },
+        { name: "Stamina To Spare", cost: 217, gold: false, condition: "pace", type: "recovery" },
+        { name: "Preferred Position", cost: 217, gold: false, condition: "pace", type: "recovery" },
+        { name: "Hydrate", cost: 217, gold: false, condition: "pace", type: "recovery" },
+        { name: "A Small Breather", cost: 217, gold: false, condition: "late", type: "recovery" },
+        { name: "After-School Stroll", cost: 217, gold: false, condition: "end", type: "recovery" },
+        { name: "Levelheaded", cost: 217, gold: false, condition: "end", type: "recovery" },
+        { name: "Wait-and-See", cost: 217, gold: false, condition: "short", type: "recovery" },
+        { name: "Watchful Eye", cost: 217, gold: false, condition: "mile", type: "recovery" },
+        { name: "Rosy Outlook", cost: 217, gold: false, condition: "medium", type: "recovery" },
+        { name: "Soft Step", cost: 217, gold: false, condition: "medium", type: "recovery" },
+        { name: "Deep Breath", cost: 217, gold: false, condition: "long", type: "recovery" },
+        { name: "Extra Tank", cost: 217, gold: false, condition: "long", type: "recovery" },
+        { name: "Passing Pro", cost: 217, gold: false, condition: "long", type: "recovery" },
+        { name: "Standing By", cost: 239, gold: false, condition: "end", type: "recovery" },
         { name: "Right-Handed ○", cost: 129, gold: false, condition: null, type: "greenspeed" },
         { name: "Right-Handed ◎", cost: 174, gold: false, condition: null, type: "greenspeed" },
         { name: "Left-Handed ○", cost: 129, gold: false, condition: null, type: "greenspeed" },
@@ -182,6 +204,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         { name: "Late Surger Savvy ◎", cost: 217, gold: false, condition: "late", type: "greenwit" },
         { name: "End Closer Savvy ○", cost: 174, gold: false, condition: "end", type: "greenwit" },
         { name: "End Closer Savvy ◎", cost: 217, gold: false, condition: "end", type: "greenwit" },
+        { name: "", cost: 217, gold: false, condition: "long", type: "recovery" },
     ]
 
     const filteredSkillsList = skillsList.filter(i => i.name.toLowerCase().includes(search.toLowerCase()))
