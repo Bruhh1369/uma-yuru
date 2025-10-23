@@ -256,9 +256,6 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                                     <div className="skill-name">
                                         <p>{d.name}</p>
                                     </div>
-                                    <div className="skill-pts">
-                                        <p>{d.cost} Pts</p>
-                                    </div>
                                 </div>
                             )
                         })}
