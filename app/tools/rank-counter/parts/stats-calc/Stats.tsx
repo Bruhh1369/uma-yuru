@@ -25,7 +25,7 @@ const Stats = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<n
 
     return (
         <div className="stats">
-                <div className="sutats">
+                <div className={`sutats ${process.env.NEXT_PUBLIC_DEBUG_MODE !== '1' ? 'pts-active' : ''}`}>
                     <StatsItem
                         setStat={setSpeed}
                         statCount={speed}
@@ -62,9 +62,9 @@ const Stats = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<n
                         setStatPoint={setWitPoints}
                     />
                 </div>
-                <h3 className="stats-total-points-panel">
+                {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <h3 className="stats-total-points-panel">
                     {speedPoints + staminaPoints + powerPoints + gutsPoints + witPoints + " Total Points"}
-                </h3>
+                </h3>}
             </div>
     )
 }

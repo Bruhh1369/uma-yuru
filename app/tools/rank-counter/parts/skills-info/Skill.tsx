@@ -284,9 +284,9 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                             <option value="6">6</option>
                         </select>
                     </div>
-                    <div className="skill-pts">
+                    {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <div className="skill-pts">
                         <p>{uniqueSkillPoints} Pts</p>
-                    </div>
+                    </div>}
                 </div>
                 {skillsData.map((d: SkillData, i: number) => {
 
@@ -312,25 +312,26 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                                     src={iconUrl}
                                     alt='skill-icon'
                                     fill
+                                    sizes='100%'
                                 />
                             </div>
                             <div className="skill-name">
                                 <p>{d.name}</p>
                             </div>
-                            <div className="skill-pts">
+                            {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <div className="skill-pts">
                                 <p>{finalCost} Pts</p>
-                            </div>
+                            </div>}
                         </div>
                     )
                 })}
             </div>
             <div className="skill-footer">
-                <GreenButton onClick={() => setShowAddSkillPanel(prev => !prev)}>
+                <GreenButton className='add-skill-button' onClick={() => setShowAddSkillPanel(prev => !prev)}>
                     Add Skill
                 </GreenButton>
-                <h3 className="total-skill-pts">
+                {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <h3 className="total-skill-pts">
                     <p>{totalSkillPoints} Pts</p>
-                </h3>
+                </h3>}
             </div>
             {showAddSkillPanel && <div className="add-skill-wrapper">
                 <div className="add-skill-panel">
@@ -348,14 +349,15 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                                             src={iconUrl}
                                             alt='skill-icon'
                                             fill
+                                            sizes='100%'
                                         />
                                     </div>
                                     <div className="skill-name">
                                         <p>{d.name}</p>
                                     </div>
-                                    <div className="skill-pts">
+                                    {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <div className="skill-pts">
                                         <p>{d.cost} Pts</p>
-                                    </div>
+                                    </div>}
                                 </div>
                             )
                         })}

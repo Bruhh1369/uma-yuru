@@ -43,9 +43,9 @@ const StatsItem = ({ statCount, name, setStat, statPoint, setStatPoint }: StatsI
                     <p className='maxstat'>/1200</p>
                 </div>
             </div>
-            <div className="stat-points">
+            {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <div className="stat-points">
                 {statPoint + ' Pts'}
-            </div>
+            </div>}
         </div>
     );
 };

@@ -4,6 +4,7 @@ import './style.css'
 import Stats from './parts/stats-calc/Stats'
 import { useState } from 'react'
 import Skills from './parts/skills-info/Skills'
+import RankResult from './parts/rank-result/RankResult'
 
 const RankCounter = () => {
 
@@ -15,6 +16,7 @@ const RankCounter = () => {
             <Stats setResult={setStatsEvaluationPoints} />
             <Skills setResult={setSkillsEvaluationPoints}/>
             {statsEvaluationPoints+skillsEvaluationPoints}
+            <RankResult />
         </div>
     )
 }

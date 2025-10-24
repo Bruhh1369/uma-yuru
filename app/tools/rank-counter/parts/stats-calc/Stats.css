@@ -3,15 +3,28 @@
     background-color: #77d823;
     border-radius: 10px;
 }
+
 .sutats {
     display: flex;
     border: solid 2px #72bf2d;
     border-radius: 10px 10px 0 0;
 }
+
 .sutats .stat-item:first-child>.stat-header {
     border-radius: 8px 0 0 0;
 }
 
+.sutats.pts-active {
+    border-radius: 10px;
+}
+
+.sutats.pts-active .stat-item:first-child .stat-content {
+    border-radius: 0 0 0 8px;
+}
+
+.sutats.pts-active .stat-item:last-child .stat-content {
+    border-radius: 0 0 8px 0;
+}
 
 .sutats .stat-item:last-child>.stat-header {
     border-radius: 0 8px 0 0;
@@ -24,6 +37,7 @@
 .sutats .stat-item:last-child>.stat-points {
     border-radius: 0 0 8px 0;
 }
+
 .stats-total-points-panel {
     background: linear-gradient(90deg, #fff5b0, #ffc027);
     text-shadow:
@@ -69,5 +83,13 @@
     .stats .stat-item:last-child>.stat-points {
         border-radius: 0 0 8px 8px;
         border-bottom: none;
+    }
+
+    .sutats.pts-active .stat-item:first-child .stat-content {
+        border-radius: 0;
+    }
+
+    .sutats.pts-active .stat-item:last-child .stat-content {
+        border-radius: 0 0 8px 8px;
     }
 }
