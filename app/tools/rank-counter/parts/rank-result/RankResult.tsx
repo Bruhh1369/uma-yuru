@@ -1,8 +1,19 @@
 import './RankResult.css'
+import FinalRankIcon from './FinalRankIcon';
 
-const RankResult = () => {
+const RankResult = ({rating}: {rating: number;}) => {
     return (
-        <div>RankResult</div>
+        <div className='rank-result'>
+            <div className="rank-result-content">
+                <div>
+                    <FinalRankIcon rating={rating} />
+                </div>
+                <div>
+                    <p>Rating</p>
+                    <p>{rating.toLocaleString('en-US')}</p>
+                </div>
+            </div>
+        </div>
     )
 }
 

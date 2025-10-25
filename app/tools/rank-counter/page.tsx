@@ -15,8 +15,7 @@ const RankCounter = () => {
         <div className='stats-section'>
             <Stats setResult={setStatsEvaluationPoints} />
             <Skills setResult={setSkillsEvaluationPoints}/>
-            {statsEvaluationPoints+skillsEvaluationPoints}
-            <RankResult />
+            <RankResult rating={statsEvaluationPoints+skillsEvaluationPoints}/>
         </div>
     )
 }
