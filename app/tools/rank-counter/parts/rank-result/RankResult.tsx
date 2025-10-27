@@ -8,7 +8,7 @@ const RankResult = ({rating}: {rating: number;}) => {
                 <div>
                     <FinalRankIcon rating={rating} />
                 </div>
-                <div>
+                <div className='rating'>
                     <p>Rating</p>
                     <p>{rating.toLocaleString('en-US')}</p>
                 </div>

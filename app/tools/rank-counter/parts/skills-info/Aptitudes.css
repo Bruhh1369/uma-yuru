@@ -1,12 +1,12 @@
 .aptitudes {
-    border: solid 2px #72bf2b;
-    border-radius: 8px;
+    overflow: hidden;
     display: flex;
     height: 5rem;
     justify-content: center;
     align-items: center;
     color: #754018;
     width: 100%;
+    border-bottom: solid 2px #c2c2c2;
 }
 
 .apt-heading {
@@ -17,20 +17,12 @@
 }
 
 .apt-heading p {
-    background-color: #77d823;
+    background-color: #c1c1c1;
     text-align: center;
     color: white;
     height: 100%;
     padding: 0.2rem 8px;
-    text-shadow: 0 1.4px 0.4px #508625;
-}
-
-.apt-heading p:first-child {
-    border-radius: 6px 0 0 0;
-}
-
-.apt-heading p:last-child {
-    border-radius: 0 0 0 6px;
+    text-shadow: 0 1.4px 0.4px #898989;
 }
 
 .apt-items .aptitudes-item:nth-child(2) {
@@ -58,14 +50,6 @@
         flex-direction: row;
     }
 
-    .apt-heading p:first-child {
-        border-radius: 6px 0 0 0;
-    }
-
-    .apt-heading p:last-child {
-        border-radius: 0 6px 0 0;
-    }
-
     .apt-items {
         width: 100%;
         display: flex;
@@ -81,6 +65,11 @@
         border-top: none;
         border-bottom: none;
         margin: 0 4rem;
+    }
+}
+@media (max-width: 540px) {
+    .apt-items{
+        margin-top: 2px;
     }
 }
 @media (max-width: 480px) {

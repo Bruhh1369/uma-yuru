@@ -84,8 +84,7 @@ const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<
 
     return (
         <div className="apt-and-skill">
-            <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
-            <Skill skillsData={skills} uniqueSkillPoints={uniqueSkillPoints} setUniqueSkillPoints={setUniqueSkillPoints} totalSkillPoints={total + uniqueSkillPoints} aptitudes={aptitudes} conditionToCategory={conditionToCategory} multiplierMap={multiplierMap} onRemove={handleRemoveSkill} setSkills={setSkills} />
+            <Skill skillsData={skills} uniqueSkillPoints={uniqueSkillPoints} setUniqueSkillPoints={setUniqueSkillPoints} totalSkillPoints={total + uniqueSkillPoints} aptitudes={aptitudes} conditionToCategory={conditionToCategory} multiplierMap={multiplierMap} onRemove={handleRemoveSkill} setSkills={setSkills} setAptitudes={setAptitudes} />
         </div>
     )
 }

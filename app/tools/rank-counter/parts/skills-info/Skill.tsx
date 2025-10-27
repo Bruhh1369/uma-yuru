@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import './Skill.css';
 import Image from 'next/image';
+import Aptitudes from './Aptitudes';
 import { GreenButton } from '@/app/assets/button/buttons';
 
 interface SkillData {
@@ -28,9 +29,10 @@ type SkillProps = {
     conditionToCategory: Record<Condition, keyof Aptitudes>,
     multiplierMap: Record<string, number>, onRemove: (index: number) => void;
     setSkills: React.Dispatch<React.SetStateAction<SkillData[]>>,
+    setAptitudes: React.Dispatch<React.SetStateAction<Aptitudes>>,
 }
 
-const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove, setSkills }: SkillProps) => {
+const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove, setSkills, setAptitudes }: SkillProps) => {
 
     const [search, setSearch] = useState<string>("")
     const skillsList: SkillData[] = [
@@ -271,6 +273,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     </div>
                 </div>
             </div>
+            <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
             <div className="skill-main">
                 <div className="skill-item unique-skill">
                     <div className="skill-name">

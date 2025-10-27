@@ -1,3 +1,4 @@
+import ProtectedImage from "@/app/assets/custom/ProtectedImage";
 import Image from "next/image";
 
 const FinalRankIcon = ({ rating }: { rating: number }) => {
@@ -25,7 +26,7 @@ const FinalRankIcon = ({ rating }: { rating: number }) => {
     if (!rank) return null
 
     return (
-        <Image
+        <ProtectedImage
             src={rank.src}
             alt="rank-icon"
             fill

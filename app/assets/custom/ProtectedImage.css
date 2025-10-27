@@ -1,0 +1,12 @@
+.protected-image{
+    position: relative;
+}
+
+.protected-image-overlay{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    opacity: 0.5;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
