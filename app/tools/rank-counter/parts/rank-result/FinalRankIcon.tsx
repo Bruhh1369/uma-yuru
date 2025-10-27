@@ -1,5 +1,4 @@
 import ProtectedImage from "@/app/assets/custom/ProtectedImage";
-import Image from "next/image";
 
 const FinalRankIcon = ({ rating }: { rating: number }) => {
     const rankTable = [

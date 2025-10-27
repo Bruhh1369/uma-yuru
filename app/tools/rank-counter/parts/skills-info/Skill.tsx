@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import './Skill.css';
 import Image from 'next/image';
 import Aptitudes from './Aptitudes';
-import { GreenButton } from '@/app/assets/button/buttons';
+import { LabelGreenButton, LabelWhiteButton } from '@/app/assets/button/buttons';
 
 interface SkillData {
     name: string;
@@ -30,6 +30,40 @@ type SkillProps = {
     multiplierMap: Record<string, number>, onRemove: (index: number) => void;
     setSkills: React.Dispatch<React.SetStateAction<SkillData[]>>,
     setAptitudes: React.Dispatch<React.SetStateAction<Aptitudes>>,
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const SkillItem = ({ skillsData, d, i, setSkills, iconUrl }: { skillsData: any, d: SkillData, i: number, setSkills: React.Dispatch<React.SetStateAction<SkillData[]>>, iconUrl: string }) => {
+    return (
+        <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i} onClick={() => {
+            setSkills(prevSkills => {
+                const exists = prevSkills.some(skill => skill.name === d.name);
+                if (exists) {
+                    // Hapus skill jika sudah ada (filter berdasarkan name)
+                    return prevSkills.filter(skill => skill.name !== d.name);
+                }
+                // Tambah skill jika belum ada
+                return [...prevSkills, d];
+            });
+        }}
+        >
+            <div className="skill-icon">
+                <Image
+                    src={iconUrl}
+                    alt='skill-icon'
+                    fill
+                    sizes='100%'
+                />
+            </div>
+            <div className="skill-name">
+                <p>{d.name}</p>
+            </div>
+            {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <div className="skill-pts">
+                <p>{d.cost} Pts</p>
+            </div>}
+            <div className='exp-coll'>{skillsData.some((skill: SkillData) => skill.name === d.name) ? '-' : '+'}</div>
+        </div>
+    )
 }
 
 const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove, setSkills, setAptitudes }: SkillProps) => {
@@ -214,8 +248,6 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
     const [starLevel, setStarLevel] = useState(0);
     const [uniqueSkillLevel, setUniqueSkillLevel] = useState(1)
 
-    const [showAddSkillPanel, setShowAddSkillPanel] = useState<boolean>(false)
-
     const handleStarClick = (level: number) => {
         setStarLevel(prev => (prev === level ? level - 1 : level));
     };
@@ -329,44 +361,30 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                 })}
             </div>
             <div className="skill-footer">
-                <GreenButton className='add-skill-button' onClick={() => setShowAddSkillPanel(prev => !prev)}>
-                    Add Skill
-                </GreenButton>
                 {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <h3 className="total-skill-pts">
                     <p>{totalSkillPoints} Pts</p>
                 </h3>}
+                <LabelGreenButton className='add-skill-button' htmlFor='add-skill-checkbox'>
+                    Add Skill
+                </LabelGreenButton>
             </div>
-            {showAddSkillPanel && <div className="add-skill-wrapper">
+            <input type="checkbox" id="add-skill-checkbox" />
+            <div className="add-skill-wrapper">
                 <div className="add-skill-panel">
                     <div className="search-skill-panel">
                         <input type="search" id="search-skill" onChange={(e) => setSearch(e.target.value)} value={search} />
-                        <button id="close-add-skill" onClick={() => setShowAddSkillPanel(prev => !prev)}>X</button>
+                        <LabelWhiteButton htmlFor='add-skill-checkbox' id='close-add-skill' >Close</LabelWhiteButton>
                     </div>
                     <div className="skill-lists">
                         {filteredSkillsList.map((d: SkillData, i: number) => {
                             const iconUrl = skillTypeIconMap[d.type ?? ""] || "";
                             return (
-                                <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i} onClick={() => setSkills(prev => [...prev, d])}>
-                                    <div className="skill-icon">
-                                        <Image
-                                            src={iconUrl}
-                                            alt='skill-icon'
-                                            fill
-                                            sizes='100%'
-                                        />
-                                    </div>
-                                    <div className="skill-name">
-                                        <p>{d.name}</p>
-                                    </div>
-                                    {process.env.NEXT_PUBLIC_DEBUG_MODE === '1' && <div className="skill-pts">
-                                        <p>{d.cost} Pts</p>
-                                    </div>}
-                                </div>
+                                <SkillItem key={i} d={d} i={i} setSkills={setSkills} iconUrl={iconUrl} skillsData={skillsData} />
                             )
                         })}
                     </div>
                 </div>
-            </div>}
+            </div>
         </div>
     );
 };

@@ -1,11 +1,43 @@
 .green-button {
-    border: solid 2px #396d00;
-    background: url('./button-green.png');
+    border: solid 1px #396d00;
+    background: url('./green-button.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     box-shadow: 0px 3px 0px -0.8px rgba(0, 0, 0, 0.3);
     color: white;
     font-family: "work-sans";
     font-size: 12pt;
     cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.white-button{
+    background: url('./white-button.png');
+    color: #793f17;
+    border: solid 1px #615d78;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 3px 0px -0.8px rgba(0, 0, 0, 0.3);
+    font-family: "work-sans";
+    font-size: 12pt;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+.green-button::after, .white-button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    border: solid 2px white;
+    mix-blend-mode: soft-light;
 }
