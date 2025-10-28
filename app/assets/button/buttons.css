@@ -38,6 +38,6 @@
     position: absolute;
     inset: 0;
     border-radius: 8px;
-    border: solid 2px white;
+    border: solid 1px white;
     mix-blend-mode: soft-light;
 }
