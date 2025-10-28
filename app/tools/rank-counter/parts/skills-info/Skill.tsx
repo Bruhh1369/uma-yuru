@@ -72,7 +72,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
     const [skillsList, setSkillsList] = useState<SkillData[]>(null as unknown as SkillData[])
 
     useEffect(() => {
-        fetch('/SkillsList.json')
+        fetch('/api/skills')
             .then(response => response.json())
             .then(data => setSkillsList(data))
             .catch(error => console.error('Error fetching skills:', error));
