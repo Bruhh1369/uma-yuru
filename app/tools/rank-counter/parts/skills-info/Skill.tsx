@@ -103,7 +103,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         panicking: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30021.png',
         ragebaiting: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30041.png',
         disturb: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30051.png',
-        narrowfiled: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30071.png',
+        narrowfield: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30071.png',
         greenspeed: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10011.png',
         greenstamina: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10021.png',
         greenpower: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10031.png',
