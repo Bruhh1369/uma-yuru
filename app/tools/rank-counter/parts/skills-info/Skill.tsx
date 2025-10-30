@@ -112,6 +112,26 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
         greenrandom: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10061.png',
     };
 
+    const goldSkillTypeIconMap: Record<string, string | null> = {
+        velocity: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20012.png',
+        acceleration: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20042.png',
+        navigation: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20052.png',
+        gate: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20062.png',
+        viewfield: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20092.png',
+        recovery: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_20022.png',
+        hesitation: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30012.png',
+        panicking: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30022.png',
+        ragebaiting: null,
+        disturb: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30052.png',
+        narrowfield: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_30072.png',
+        greenspeed: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10012.png',
+        greenstamina: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10022.png',
+        greenpower: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10032.png',
+        greenguts: null,
+        greenwit: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10052.png',
+        greenrandom: 'https://gametora.com/images/umamusume/skill_icons/utx_ico_skill_10062.png',
+    };
+
     return (
         <div className="skill">
             <div className="skill-header">
@@ -173,7 +193,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     }
 
                     const finalCost = costCounter()
-                    const iconUrl = skillTypeIconMap[d.type ?? ""] || "";
+                    const iconUrl = d.gold ? goldSkillTypeIconMap[d.type ?? ""] || "" : skillTypeIconMap[d.type ?? ""] || "";
 
                     return (
                         <div className={`skill-item ${d.gold ? 'gold-skill' : ''}`} key={i} onClick={() => onRemove && onRemove(i)}>
@@ -212,7 +232,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     </div>
                     <div className="skill-lists">
                         {filteredSkillsList.map((d: SkillData, i: number) => {
-                            const iconUrl = skillTypeIconMap[d.type ?? ""] || "";
+                            const iconUrl = d.gold ? goldSkillTypeIconMap[d.type ?? ""] || "" : skillTypeIconMap[d.type ?? ""] || "";
                             return (
                                 <SkillItem key={i} d={d} i={i} setSkills={setSkills} iconUrl={iconUrl} skillsData={skillsData} />
                             )
