@@ -4,7 +4,7 @@ import './Aptitudes.css'
 import AptitudesItem from './AptitudesItem'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Aptitudes = ({ setAptdVal, apdtTrack, aptdDistance, aptdStyle }: any) => {
+const AptitudesC = ({ setAptdVal, apdtTrack, aptdDistance, aptdStyle }: any) => {
     return (
         <div className="aptitudes">
             <div className="apt-heading">
@@ -36,4 +36,4 @@ const Aptitudes = ({ setAptdVal, apdtTrack, aptdDistance, aptdStyle }: any) => {
     )
 }
 
-export default Aptitudes
+export default AptitudesC

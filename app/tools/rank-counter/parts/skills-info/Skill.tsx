@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react';
 import './Skill.css';
 import Image from 'next/image';
-import Aptitudes from './Aptitudes';
 import { LabelGreenButton, LabelWhiteButton } from '@/app/assets/button/buttons';
+import AptitudesC from './Aptitudes';
 
 interface SkillData {
     name: string;
@@ -160,7 +160,7 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
                     </div>
                 </div>
             </div>
-            <Aptitudes setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
+            <AptitudesC setAptdVal={setAptitudes} apdtTrack={aptitudes.track} aptdDistance={aptitudes.distance} aptdStyle={aptitudes.style} />
             <div className="skill-main">
                 <div className="skill-item unique-skill">
                     <div className="skill-name">

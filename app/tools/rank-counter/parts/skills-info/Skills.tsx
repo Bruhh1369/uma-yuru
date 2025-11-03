@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import Aptitudes from "./Aptitudes";
 import './Skills.css'
 import Skill from "./Skill";
+import { Aptitudes, Track, Distance, Style } from "../../../../assets/types/aptitudes"
 
-type Track = { turf: string; dirt: string };
-type Distance = { short: string; mile: string; medium: string; long: string };
-type Style = { front: string; pace: string; late: string; end: string };
-type Aptitudes = { track: Track; distance: Distance; style: Style };
+
 type Condition = keyof Track | keyof Distance | keyof Style;
 type Skill = { name: string; condition?: Condition | null; cost: number; gold?: boolean; type?: "velocity" | "acceleration" | "navigation" | "gate" | "viewfield" | "recovery" | "greenspeed" | "greenstamina" | "greenpower" | "greenguts" | "greenwit" | "greenrandom" | "hesitation" | "panicking" | "ragebaiting" | "disturb" | "narrowfiled"; };
 
