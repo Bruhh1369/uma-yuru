@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import './Skills.css'
-import Skill from "./Skill";
+import SkillC from "./Skill";
 import { Aptitudes, Track, Distance, Style } from "../../../../assets/types/aptitudes"
-
-
-type Condition = keyof Track | keyof Distance | keyof Style;
-type Skill = { name: string; condition?: Condition | null; cost: number; gold?: boolean; type?: "velocity" | "acceleration" | "navigation" | "gate" | "viewfield" | "recovery" | "greenspeed" | "greenstamina" | "greenpower" | "greenguts" | "greenwit" | "greenrandom" | "hesitation" | "panicking" | "ragebaiting" | "disturb" | "narrowfiled"; };
+import { SkillData as Skill, Condition } from "../../../../assets/types/skills";
 
 const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<number>> }) => {
 
@@ -81,7 +78,7 @@ const Skills = ({ setResult }: { setResult: React.Dispatch<React.SetStateAction<
 
     return (
         <div className="apt-and-skill">
-            <Skill skillsData={skills} uniqueSkillPoints={uniqueSkillPoints} setUniqueSkillPoints={setUniqueSkillPoints} totalSkillPoints={total + uniqueSkillPoints} aptitudes={aptitudes} conditionToCategory={conditionToCategory} multiplierMap={multiplierMap} onRemove={handleRemoveSkill} setSkills={setSkills} setAptitudes={setAptitudes} />
+            <SkillC skillsData={skills} uniqueSkillPoints={uniqueSkillPoints} setUniqueSkillPoints={setUniqueSkillPoints} totalSkillPoints={total + uniqueSkillPoints} aptitudes={aptitudes} conditionToCategory={conditionToCategory} multiplierMap={multiplierMap} onRemove={handleRemoveSkill} setSkills={setSkills} setAptitudes={setAptitudes} />
         </div>
     )
 }

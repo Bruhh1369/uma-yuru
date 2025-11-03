@@ -4,20 +4,8 @@ import './Skill.css';
 import Image from 'next/image';
 import { LabelGreenButton, LabelWhiteButton } from '@/app/assets/button/buttons';
 import AptitudesC from './Aptitudes';
-
-interface SkillData {
-    name: string;
-    condition?: Condition | null;
-    cost: number;
-    gold?: boolean;
-    type?: "velocity" | "acceleration" | "navigation" | "gate" | "viewfield" | "recovery" | "greenspeed" | "greenstamina" | "greenpower" | "greenguts" | "greenwit" | "greenrandom" | "hesitation" | "panicking" | "ragebaiting" | "disturb" | "narrowfiled";
-}
-
-type Track = { turf: string; dirt: string };
-type Distance = { short: string; mile: string; medium: string; long: string };
-type Style = { front: string; pace: string; late: string; end: string };
-type Aptitudes = { track: Track; distance: Distance; style: Style };
-type Condition = keyof Track | keyof Distance | keyof Style;
+import { Aptitudes } from "../../../../assets/types/aptitudes"
+import { Condition, SkillData } from '../../../../assets/types/skills';
 
 type SkillProps = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -39,10 +27,8 @@ const SkillItem = ({ skillsData, d, i, setSkills, iconUrl }: { skillsData: any, 
             setSkills(prevSkills => {
                 const exists = prevSkills.some(skill => skill.name === d.name);
                 if (exists) {
-                    // Hapus skill jika sudah ada (filter berdasarkan name)
                     return prevSkills.filter(skill => skill.name !== d.name);
                 }
-                // Tambah skill jika belum ada
                 return [...prevSkills, d];
             });
         }}
@@ -66,7 +52,7 @@ const SkillItem = ({ skillsData, d, i, setSkills, iconUrl }: { skillsData: any, 
     )
 }
 
-const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove, setSkills, setAptitudes }: SkillProps) => {
+const SkillC = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkillPoints, aptitudes, conditionToCategory, multiplierMap, onRemove, setSkills, setAptitudes }: SkillProps) => {
 
     const [search, setSearch] = useState<string>("")
     const [skillsList, setSkillsList] = useState<SkillData[]>(null as unknown as SkillData[])
@@ -244,4 +230,4 @@ const Skill = ({ skillsData, uniqueSkillPoints, setUniqueSkillPoints, totalSkill
     );
 };
 
-export default Skill;
+export default SkillC;
